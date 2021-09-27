@@ -171,6 +171,9 @@ h1 {
   font-weight: 700;
   color: red;
   cursor: pointer;
+  pointer-events: all;
+  touch-action: none;
+  z-index: 10;
 }
 
 .portfolio-item {
