@@ -1,24 +1,17 @@
-# README
+# Crypto-Calculator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails/React tool to check current prices and the total current value of your cryptocurrencies. Fetches data
+from `coingecko` API.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+* Realtime search suggestions with `axios` call
+* Custom styling, spinner utilizes`Bootstrap` gem
 
-* System dependencies
+## Instructions
 
-* Configuration
+* Run `bundle install` and `yarn install` to install dependencies
 
-* Database creation
+## Live Demo
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* https://cryptofolio-preview.herokuapp.com
