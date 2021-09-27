@@ -1,4 +1,6 @@
 class CurrenciesController < ApplicationController
+  before_action :find_currency, only: [:calculate]
+
   def index; end
 
   def search
@@ -10,16 +12,16 @@ class CurrenciesController < ApplicationController
   def calculate
     amount = params[:amount]
     render json: {
-      currency: currency,
-      current_price: currency.current_price,
+      currency: @currency,
+      current_price: @currency.current_price,
       amount: amount,
-      value: currency.calculate_value(amount)
+      value: @currency.calculate_value(amount)
     }
   end
 
   private
 
-  def currency
+  def find_currency
     @currency ||= Currency.find(params[:id])
   end
 end
