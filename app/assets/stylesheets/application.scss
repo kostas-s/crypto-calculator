@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import 'bootstrap';
 
 a, body, ul, li, p, div, form, span, input, h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -20,7 +21,7 @@ a, body, ul, li, p, div, form, span, input, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+    //font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
 }
 
 .app-container {
@@ -97,6 +98,31 @@ h1 {
     transition-duration: 10ms;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-back {
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 0.5em;
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0 3px 4px 1px rgba(0,0,0,0.2);
+  width: 50%;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  align-self: center;
+  transition-duration: 10ms;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-back:hover {
+  background-color: rgba(112, 128, 144, 0.46);
+}
+
+.clicked {
+  background-color: rgba(112, 128, 144, 0.46);
+  cursor: default;
+  pointer-events: none;
 }
 
 .btn-calculate:hover {

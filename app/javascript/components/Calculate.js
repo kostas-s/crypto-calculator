@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 
-const Calculate = ({ handleSubmit, activeCurrency, handleAmountChange }) => {
+const Calculate = ({
+  handleBack,
+  handleSubmit,
+  activeCurrency,
+  handleAmountChange,
+  validateAmount,
+}) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>How much {activeCurrency.name} do you own?:</label>
+          <label>How much {activeCurrency.name} do you own?</label>
           <br />
           <input
             onChange={handleAmountChange}
             autoComplete="off"
-            type="text"
+            type="number"
             name="amount"
             placeholder="How much do you own?"
             className="field"
@@ -20,8 +26,11 @@ const Calculate = ({ handleSubmit, activeCurrency, handleAmountChange }) => {
           <input
             type="submit"
             className="btn-calculate"
-            value="Calculate"
+            value="Add to Portfolio"
           ></input>
+          <button onClick={handleBack} className="btn-back">
+            Go Back
+          </button>
         </div>
       </form>
     </div>

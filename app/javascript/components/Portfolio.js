@@ -1,16 +1,30 @@
 import React, { Component } from "react";
 
 const Portfolio = ({ portfolio }) => {
+  const totalValue = portfolio.reduce((value, curr) => {
+    return curr.value + value;
+  }, 0);
   return (
     <>
-      <h1>Your Portfolio.</h1>
+      <h1>Your Portfolio</h1>
+      <p>Total Value: {totalValue}</p>
       <div className="portfolio">
         {portfolio.length > 0
           ? portfolio.map((item, idx) => {
               return (
-                <li key={idx}>
-                  {item.currency.name}. Amount:{item.amount}, Value:{item.value}
-                  . (Current Price: {item.current_price})
+                <li className="portfolio-item" key={idx}>
+                  <img
+                    className="portfolio-item-image"
+                    src={item.image_src}
+                    alt="image"
+                    name="coin-image"
+                  />
+                  <span className="portfolio-item-name">
+                    {item.amount} x {item.currency.name}
+                  </span>
+                  Value:
+                  <span className="portfolio-item-value">{item.value}.</span>
+                  (Current Price: {item.current_price})
                 </li>
               );
             })

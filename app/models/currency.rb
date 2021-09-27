@@ -1,17 +1,28 @@
 class Currency < ApplicationRecord
   def calculate_value(amount)
-    (current_price.to_f * amount.to_f)  .round(4)
+    fetch_data unless data
+    (JSON.parse(data)[0]['current_price'].to_f * amount.to_f).round(4)
   end
 
   def current_price
-    logger.info("======HITTING THE API NOW===================================")
+    fetch_data unless data
+    JSON.parse(data)[0]['current_price']
+  end
+
+  def image
+    JSON.parse(data)[0]['image']
+  end
+
+  def fetch_data
+    logger.info('=FETCHING FROM API=')
     url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=' + slug
     response = Faraday.get(url)
-    JSON.parse(response.body)[0]["current_price"]
+    raise Exception, 'API did not respond with data for currency' if JSON.parse(response.body).empty?
+    update(data: response.body)
   end
 end
 
-# [{"id"=>"bitcoin",
+# [{"id"=>"bitcoin",s
 # "symbol"=>"btc",
 # "name"=>"Bitcoin",
 # "image"=>"https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",

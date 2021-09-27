@@ -41,38 +41,82 @@ const PortfolioContainer = () => {
     setAmount(evt.target.value);
   };
 
+  const addSpinnerChildToElement = (element) => {
+    const spinnerParent = document.createElement("div");
+    spinnerParent.classList.add("d-flex", "justify-content-center", "my-5");
+    const spinner = document.createElement("div");
+    spinner.classList.add("spinner-border");
+    spinner.style = "width: 8rem; height: 8rem;";
+    spinner.role = "status";
+    spinnerParent.appendChild(spinner);
+    element.appendChild(spinnerParent);
+  };
+
+  const handleBack = (evt) => {
+    setAmount("");
+    setActiveCurrency(null);
+    setName("");
+  };
+
+  const disableButton = (button) => {
+    button.classList.add("clicked");
+    button.disabled = true;
+  };
+
+  const validateAmount = (value) => {
+    console.log(value);
+  };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    addSpinnerChildToElement(evt.target);
+    disableButton(document.querySelector(".btn-calculate"));
+    disableButton(document.querySelector(".btn-back"));
+
     axios
       .post("/calculate", { id: activeCurrency.id, amount: amount })
       .then((data) => {
-        setAmount("");
-        setActiveCurrency(null);
-        setPortfolio([...portfolio, data.data]);
+        console.log(data);
+        if (data.data.error) {
+          throw new Error(data.data.error);
+        } else {
+          setPortfolio([...portfolio, data.data]);
+        }
       })
       .catch((err) => {
-        debugger;
+        console.log(err);
+      })
+      .finally(() => {
+        setAmount("");
+        setActiveCurrency(null);
+        setName("");
       });
   };
 
   return (
-    <div>
-      <h1>Cryptocurrency Portfolio Calculator</h1>
-      {!activeCurrency ? (
-        <Search
-          handleChange={handleChange}
-          handleSelect={handleSelect}
-          searchResults={searchResults}
-          name={name}
-        />
-      ) : (
-        <Calculate
-          handleSubmit={handleSubmit}
-          activeCurrency={activeCurrency}
-          handleAmountChange={handleAmountChange}
-        />
-      )}
-      <Portfolio portfolio={portfolio} />
+    <div className="app-container">
+      <div className="left-column-container">
+        <h1>Crypto Calculator</h1>
+        {!activeCurrency ? (
+          <Search
+            handleChange={handleChange}
+            handleSelect={handleSelect}
+            searchResults={searchResults}
+            name={name}
+          />
+        ) : (
+          <Calculate
+            validateAmount={validateAmount}
+            handleBack={handleBack}
+            handleSubmit={handleSubmit}
+            activeCurrency={activeCurrency}
+            handleAmountChange={handleAmountChange}
+          />
+        )}
+      </div>
+      <div className="right-column-container">
+        <Portfolio portfolio={portfolio} />
+      </div>
     </div>
   );
 };
