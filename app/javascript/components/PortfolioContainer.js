@@ -63,10 +63,6 @@ const PortfolioContainer = () => {
     button.disabled = true;
   };
 
-  const validateAmount = (value) => {
-    console.log(value);
-  };
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     addSpinnerChildToElement(evt.target);
@@ -76,7 +72,7 @@ const PortfolioContainer = () => {
     axios
       .post("/calculate", { id: activeCurrency.id, amount: amount })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.data.error) {
           throw new Error(data.data.error);
         } else {
