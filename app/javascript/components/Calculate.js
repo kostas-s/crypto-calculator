@@ -5,7 +5,6 @@ const Calculate = ({
   handleSubmit,
   activeCurrency,
   handleAmountChange,
-  validateAmount,
 }) => {
   return (
     <div>

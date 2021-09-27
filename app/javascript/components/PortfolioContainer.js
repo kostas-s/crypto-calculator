@@ -102,7 +102,6 @@ const PortfolioContainer = () => {
           />
         ) : (
           <Calculate
-            validateAmount={validateAmount}
             handleBack={handleBack}
             handleSubmit={handleSubmit}
             activeCurrency={activeCurrency}
