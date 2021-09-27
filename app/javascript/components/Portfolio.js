@@ -25,13 +25,13 @@ const Portfolio = ({ portfolio, handlePortfolioDelete }) => {
                   Value:
                   <span className="portfolio-item-value">{item.value}</span>
                   Unit Price:{item.current_price}
-                  <span
+                  <button
                     onClick={handlePortfolioDelete}
                     data-portfolio_idx={idx}
                     className="delete-btn"
                   >
                     X
-                  </span>
+                  </button>
                 </li>
               );
             })
