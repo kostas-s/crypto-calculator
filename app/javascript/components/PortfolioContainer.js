@@ -29,14 +29,12 @@ const PortfolioContainer = () => {
   };
 
   const handlePortfolioDelete = (evt) => {
-    if (window.confirm("Delete portfolio item?")) {
-      const targetIdx = Number(evt.target.dataset.portfolio_idx);
-      setPortfolio(
-        portfolio.filter((item) => {
-          return item !== portfolio[targetIdx];
-        })
-      );
-    }
+    const targetIdx = Number(evt.target.dataset.portfolio_idx);
+    setPortfolio(
+      portfolio.filter((item) => {
+        return item !== portfolio[targetIdx];
+      })
+    );
   };
 
   const handleSelect = (evt) => {
