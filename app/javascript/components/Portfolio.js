@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const Portfolio = ({ portfolio }) => {
+const Portfolio = ({ portfolio, handlePortfolioDelete }) => {
   const totalValue = portfolio.reduce((value, curr) => {
     return curr.value + value;
   }, 0);
@@ -20,11 +20,18 @@ const Portfolio = ({ portfolio }) => {
                     name="coin-image"
                   />
                   <span className="portfolio-item-name">
-                    {item.amount} x {item.currency.name}
+                    {item.amount} {item.currency.currency_symbol}
                   </span>
                   Value:
-                  <span className="portfolio-item-value">{item.value}.</span>
-                  (Current Price: {item.current_price})
+                  <span className="portfolio-item-value">{item.value}</span>
+                  Unit Price:{item.current_price}
+                  <span
+                    onClick={handlePortfolioDelete}
+                    data-portfolio_idx={idx}
+                    className="delete-btn"
+                  >
+                    X
+                  </span>
                 </li>
               );
             })

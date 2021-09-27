@@ -16,8 +16,8 @@
 @import 'bootstrap';
 
 a, body, ul, li, p, div, form, span, input, h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -25,26 +25,35 @@ body {
 }
 
 .app-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    font-size: 1.2em;
-    height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  font-size: 1.2em;
+  height: 100vh;
 }
 
-@media screen and (max-width: 400px) {
-    .app-container {
-      display:flex;
-      flex-direction: column;
-      font-size: 1em;
-    }
-    .left-column-container {
-      order: 2;
-    }
+@media screen and (max-width: 1280px) {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 1em !important;
+  }
+  .left-column-container {
+    order: 2;
+  }
   .portfolio-item {
-    padding: 0.1em;
-    font-size: 1em;
+    padding: 0.2em !important;
+    font-size: 1em !important;
   }
 
+  .portfolio-item-image {
+    height: 20px !important;
+    align-self: flex-start;
+  }
+
+  .portfolio-item-name {
+    font-weight: 400 !important;
+    margin-right: 0.4em !important;
+  }
 
   .right-column-container {
     order: 1;
@@ -52,79 +61,80 @@ body {
 }
 
 h1 {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .left-column-container {
-    padding: 1em;
-    grid-column: 1;
+  padding: 1em;
+  grid-column: 1;
 }
 
 .right-column-container {
-    color: aliceblue;
-    box-shadow: -2px 0 10px 4px rgba(0,0,0,0.4);
-    grid-column: 2;
-    padding: 1em;
-    background: #2c3238;
+  color: aliceblue;
+  box-shadow: -2px 0 10px 4px rgba(0, 0, 0, 0.4);
+  grid-column: 2;
+  padding: 1em;
+  background: #2c3238;
 }
 
 .form-group {
-    display:flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .currency-list {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
 }
 
 .currency-list-item {
-    transition-duration: 50ms;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    box-sizing: border-box;
-    pointer-events: all;
-    border: 1px solid slategrey;
-    border-radius: 10px;
-    padding: 1em 1em;
-    margin-top: 5px;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.8);
+  transition-duration: 50ms;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  pointer-events: all;
+  border: 1px solid slategrey;
+  border-radius: 10px;
+  padding: 1em 1em;
+  margin-top: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .field {
-    border-radius: 10px;
-    padding: 0.5em;
-    border: 1px solid rgba(0,0,0,0.2);
-    box-shadow: 0 3px 4px 1px rgba(0,0,0,0.2);
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 1em;
-    font-size: 1.2em;
+  border-radius: 10px;
+  padding: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1em;
+  font-size: 1.2em;
 }
+
 .btn-calculate {
-    border-radius: 10px;
-    padding: 0.5em;
-    border: 1px solid rgba(0,0,0,0.2);
-    box-shadow: 0 3px 4px 1px rgba(0,0,0,0.2);
-    width: 50%;
-    box-sizing: border-box;
-    font-size: 1.2em;
-    align-self: center;
-    transition-duration: 10ms;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  align-self: center;
+  transition-duration: 10ms;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .btn-back {
   margin-top: 10px;
   border-radius: 10px;
   padding: 0.5em;
-  border: 1px solid rgba(0,0,0,0.2);
-  box-shadow: 0 3px 4px 1px rgba(0,0,0,0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 4px 1px rgba(0, 0, 0, 0.2);
   width: 50%;
   box-sizing: border-box;
   font-size: 1.2em;
@@ -145,47 +155,59 @@ h1 {
 }
 
 .btn-calculate:hover {
-    background-color: rgba(112, 128, 144, 0.46);
+  background-color: rgba(112, 128, 144, 0.46);
 }
 
 .currency-list-item span {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .currency-list-item:hover {
-    background-color: rgba(112, 128, 144, 0.3);
+  background-color: rgba(112, 128, 144, 0.3);
+}
+
+.delete-btn {
+  font-size: 0.9em;
+  font-weight: 700;
+  color: red;
+  cursor: pointer;
 }
 
 .portfolio-item {
-    color: black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background: aliceblue;
-    padding: 0.3em;
-    font-size: 1.3em;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: aliceblue;
+  padding: 0.3em;
+  font-size: 1.3em;
+  justify-content: space-between;
+}
+
+.portfolio-item-value {
+  margin-right: 0.4em !important;
 }
 
 .portfolio-item:not(:last-child) {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .portfolio-item:first-child {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .portfolio-item:last-child {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .portfolio-item-image {
-    height:50px;
-    margin-right: 10px;
+  height: 50px;
+  margin-right: 10px;
 }
 
 .portfolio-item-name {
-    font-weight: 600;
-    margin-right: 1em;
+  font-weight: 600;
+  margin-right: 1em;
 }

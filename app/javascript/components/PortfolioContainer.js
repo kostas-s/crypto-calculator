@@ -28,6 +28,17 @@ const PortfolioContainer = () => {
     setName(evt.target.value);
   };
 
+  const handlePortfolioDelete = (evt) => {
+    if (window.confirm("Delete portfolio item?")) {
+      const targetIdx = Number(evt.target.dataset.portfolio_idx);
+      setPortfolio(
+        portfolio.filter((item) => {
+          return item !== portfolio[targetIdx];
+        })
+      );
+    }
+  };
+
   const handleSelect = (evt) => {
     evt.preventDefault();
     const id = parseInt(evt.target.dataset.id);
@@ -110,7 +121,10 @@ const PortfolioContainer = () => {
         )}
       </div>
       <div className="right-column-container">
-        <Portfolio portfolio={portfolio} />
+        <Portfolio
+          portfolio={portfolio}
+          handlePortfolioDelete={handlePortfolioDelete}
+        />
       </div>
     </div>
   );
