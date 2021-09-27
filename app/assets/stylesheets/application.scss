@@ -21,7 +21,7 @@ a, body, ul, li, p, div, form, span, input, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    //font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+  background: #dbe2e8;
 }
 
 .app-container {
@@ -31,12 +31,31 @@ body {
     height: 100vh;
 }
 
+@media screen and (max-width: 400px) {
+    .app-container {
+      display:flex;
+      flex-direction: column;
+      font-size: 1em;
+    }
+    .left-column-container {
+      order: 2;
+    }
+  .portfolio-item {
+    padding: 0.1em;
+    font-size: 1em;
+  }
+
+
+  .right-column-container {
+    order: 1;
+  }
+}
+
 h1 {
     margin-bottom: 1em;
 }
 
 .left-column-container {
-    background: #dbe2e8;
     padding: 1em;
     grid-column: 1;
 }
