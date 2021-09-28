@@ -11,9 +11,13 @@ const PortfolioContainer = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [activeCurrency, setActiveCurrency] = useState(null);
   const [amount, setAmount] = useState("");
+  const [refreshDisabled, setRefreshDisabled] = useState(false);
 
   const handleRefresh = (evt) => {
     evt.preventDefault();
+    if (refreshDisabled) return;
+    setRefreshDisabled(true);
+
     axios
       .post("/refresh", {
         coin_names: portfolio.map((val) => {
@@ -32,6 +36,9 @@ const PortfolioContainer = () => {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setTimeout(() => setRefreshDisabled(false), 6000);
       });
   };
   const handleChange = (evt) => {
@@ -143,6 +150,7 @@ const PortfolioContainer = () => {
           portfolio={portfolio}
           handlePortfolioDelete={handlePortfolioDelete}
           handleRefresh={handleRefresh}
+          refreshDisabled={refreshDisabled}
         />
       </div>
     </div>

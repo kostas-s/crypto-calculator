@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
-const Portfolio = ({ portfolio, handlePortfolioDelete, handleRefresh }) => {
+const Portfolio = ({
+  portfolio,
+  handlePortfolioDelete,
+  handleRefresh,
+  refreshDisabled,
+}) => {
   const totalValue = portfolio.reduce((value, curr) => {
     return curr.value + value;
   }, 0);
@@ -9,7 +14,11 @@ const Portfolio = ({ portfolio, handlePortfolioDelete, handleRefresh }) => {
       <div className="portfolio-title">
         <h1>Your Portfolio</h1>
         {portfolio.length > 0 ? (
-          <button className="btn-refresh" onClick={handleRefresh}>
+          <button
+            className="btn-refresh"
+            onClick={handleRefresh}
+            disabled={refreshDisabled}
+          >
             Refresh Prices
           </button>
         ) : null}
