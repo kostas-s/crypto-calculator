@@ -3,6 +3,12 @@ class CurrenciesController < ApplicationController
 
   def index; end
 
+  # Takes in names of portfolio items, returns updated prices
+  def refresh_portfolio
+    updated_data = Currency.fetch_updated_data_for_coins(params[:coin_names])
+    render json: { updated_data: JSON.parse(updated_data) }
+  end
+
   def search
     @currencies = Currency.where('LOWER(name) LIKE ?', "%#{params[:search].downcase}%").order('id ASC')
     render json: { currencies: @currencies }

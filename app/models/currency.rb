@@ -18,7 +18,18 @@ class Currency < ApplicationRecord
     url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=' + slug
     response = Faraday.get(url)
     raise Exception, 'API did not respond with data for currency' if JSON.parse(response.body).empty?
+
     update(data: response.body)
+  end
+
+  def self.fetch_updated_data_for_coins(coin_names)
+    raise Exception, 'No coins in current portfolio' if coin_names.empty?
+
+    url = 'https://api.coingecko.com/api/v3/simple/price?vs_currencies=eur&ids=' + coin_names.join(',')
+    response = Faraday.get(url)
+    raise Exception, 'API did not respond with data for currency' if JSON.parse(response.body).empty?
+
+    response.body
   end
 end
 

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'currencies#index'
   post 'search', to: 'currencies#search'
   post 'calculate', to: 'currencies#calculate'
+  post 'refresh', to: 'currencies#refresh_portfolio'
 end

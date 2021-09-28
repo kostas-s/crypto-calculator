@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 
-const Portfolio = ({ portfolio, handlePortfolioDelete }) => {
+const Portfolio = ({ portfolio, handlePortfolioDelete, handleRefresh }) => {
   const totalValue = portfolio.reduce((value, curr) => {
     return curr.value + value;
   }, 0);
   return (
     <>
-      <h1>Your Portfolio</h1>
+      <div className="portfolio-title">
+        <h1>Your Portfolio</h1>
+        {portfolio.length > 0 ? (
+          <button className="btn-refresh" onClick={handleRefresh}>
+            Refresh Prices
+          </button>
+        ) : null}
+      </div>
+
       <p>Total Value: {totalValue}</p>
       <div className="portfolio">
         {portfolio.length > 0
@@ -22,8 +30,9 @@ const Portfolio = ({ portfolio, handlePortfolioDelete }) => {
                   <span className="portfolio-item-name">
                     {item.amount} {item.currency.currency_symbol}
                   </span>
-                  Value:
-                  <span className="portfolio-item-value">{item.value}</span>
+                  <span className="portfolio-item-value">
+                    Value:{item.value}
+                  </span>
                   Unit Price:{item.current_price}
                   <input
                     type="button"

@@ -12,9 +12,29 @@ const PortfolioContainer = () => {
   const [activeCurrency, setActiveCurrency] = useState(null);
   const [amount, setAmount] = useState("");
 
+  const handleRefresh = (evt) => {
+    evt.preventDefault();
+    axios
+      .post("/refresh", {
+        coin_names: portfolio.map((val) => {
+          return val["currency"]["slug"];
+        }),
+      })
+      .then((result) => {
+        // Get each portfolio item and update its price
+        const updatedPortfolio = [...portfolio];
+        for (let item of updatedPortfolio) {
+          item.current_price =
+            result.data.updated_data[item["currency"]["slug"]]["eur"];
+          item.value = item.current_price * parseInt(item.amount);
+        }
+        setPortfolio(updatedPortfolio);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const handleChange = (evt) => {
-    const token = document.querySelector("[name=csrf-token]").content;
-    axios.defaults.headers.common["X-CSRF-TOKEN"] = token;
     axios
       .post("/search", {
         search: evt.target.value,
@@ -122,10 +142,10 @@ const PortfolioContainer = () => {
         <Portfolio
           portfolio={portfolio}
           handlePortfolioDelete={handlePortfolioDelete}
+          handleRefresh={handleRefresh}
         />
       </div>
     </div>
   );
 };
-
 export default PortfolioContainer;

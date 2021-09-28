@@ -104,6 +104,28 @@ h1 {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+.portfolio-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-refresh {
+  border-radius: 10px;
+  padding: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 4px 1px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  font-size: 1.2em;
+  align-self: flex-start;
+  transition-duration: 10ms;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-refresh:hover {
+  background-color: rgb(141, 159, 176);
+}
+
 .field {
   border-radius: 10px;
   padding: 0.5em;
